@@ -12,7 +12,7 @@ public class UserRepository implements CrudRepository<User> {
     @Override
     public User save(User t) {
         String sql = "INSERT INTO app_user ";
-        PreparedStatement ps = ConnectionUtil.getInstance().connect().prepareStatement(sql);
+        //PreparedStatement ps = ConnectionUtil.getInstance().connect().prepareStatement(sql);
         //ps.executeQuery();
         return null;
     }
