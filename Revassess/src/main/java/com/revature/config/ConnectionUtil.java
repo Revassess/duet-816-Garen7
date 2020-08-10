@@ -2,9 +2,7 @@ package com.revature.config;
 
 import org.postgresql.Driver;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 /**
  * 
@@ -44,7 +42,19 @@ public class ConnectionUtil {
 
 	//implement this method with a callable statement that calls the absolute value sql function
 	public long callAbsoluteValueFunction(long value){
-		return value;
+		try {
+			CallableStatement cs = connect().prepareCall("{call public.abscaller(?)}");
+			cs.setLong(1, value);
+			ResultSet rs = cs.executeQuery();
+			if(rs.next())
+				return rs.getInt(1);
+			else
+				return 1/0;
+		}
+		catch (SQLException e){
+			e.printStackTrace();
+			return 1/0;
+		}
 	}
 	
 
