@@ -1,0 +1,1 @@
+SELECT * FROM study_set FULL JOIN app_user ON study_set.owner_id = app_user.user_id WHERE app_user.user_id = 5;
